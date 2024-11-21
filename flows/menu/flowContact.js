@@ -4,7 +4,7 @@ const flowContact = addKeyword(['contacto','urgente'])
     .addAnswer([
         '📞 *Información de Contacto*\n',
         '*Coordinación de Prácticas Profesionales*\n',
-        '👤 *Coordinador General:* Dr. Erika Alarcon',
+        '👤 *Directora:* Dr. Erika Alarcon',
         '📧 Email:practicas.iudc@gmail.com', 
         '*Horarios de Atención:*',
         '• Lunes a Viernes: 8:00 AM - 5:00 PM',     
