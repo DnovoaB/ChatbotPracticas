@@ -3,6 +3,7 @@ const { createBot, createProvider, createFlow, addKeyword } = require('@bot-what
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const JsonFileAdapter = require('@bot-whatsapp/database/json')
+const qrcode = require('qrcode-terminal'); // Added import
 
 // Importación de flujos
 const { flowMain, keywordHandler } = require('./flows/menu/flowMain')
@@ -29,7 +30,13 @@ const main = async () => {
         database: adapterDB,
     })
 
-    QRPortalWeb()
+    QRPortalWeb({
+        port: 3000,
+        qr: (qr) => {
+            console.log('QR RECEIVED', qr);
+            qrcode.generate(qr, { small: true });
+        }
+    })
 }
 
 main()
