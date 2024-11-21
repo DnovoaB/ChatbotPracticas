@@ -26,7 +26,7 @@ const keywords = {
     ],
     menu: [
         'menu','menú', 'Inicio','inicio', 'principal', 'volver', 'regresar', 'atras',
-        'comenzar', 'empezar', 'reiniciar', 'opciones', 'lista'
+        'comenzar', 'empezar', 'reiniciar', 'opciones', 'lista','buenas tardes','Buenas tardes','Buenas Tardes',
     ]
 }
 

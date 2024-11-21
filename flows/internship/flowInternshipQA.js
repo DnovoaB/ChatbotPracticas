@@ -17,7 +17,7 @@ const PREGUNTAS_FRECUENTES = {
             "• Copia de cédula del representante legal",
             "• Copia de cámara de comercio",
             "• Certificación o carta laboral especificando funciones.",
-            "📧 *IMPORTANTE:* Los documentos deben enviarse a *practicas.iudc@gmail.com*"
+            "⚠️ *IMPORTANTE:* Los documentos deben enviarse a *practicas.iudc@gmail.com*"
         ].join('\n')
     },
     '2': {
@@ -34,7 +34,7 @@ const PREGUNTAS_FRECUENTES = {
             "• Dirección y contacto del estudiante",
             "• Año de matrícula y fecha de inicio de la práctica",
             "• Contacto de emergencia con nombre, parentesco y número",
-            "📧 *IMPORTANTE:* Enviar toda la documentación a *practicas.iudc@gmail.com*"
+            "⚠️ *IMPORTANTE:* Enviar toda la documentación a *practicas.iudc@gmail.com*"
         ].join('\n')
     },
     '3': {
@@ -70,9 +70,9 @@ const PREGUNTAS_FRECUENTES = {
         respuesta: [
             "📬 *ENTREGA DE FORMATOS*\n",
             "• Los formatos deben ser entregados en las siguientes sedes dependiendo del área de práctica:",
-            "  1️⃣ *Consultorio Jurídico* (para prácticas de Derecho)",
-            "  2️⃣ *Consultorio Psicológico* (para prácticas de Psicología)",
-            "  3️⃣ *En la Secretaría de Bienestar Universitario* para prácticas de otras áreas",
+            "  🔹 *Consultorio Jurídico* (para prácticas de Derecho)",
+            "  🔹 *Consultorio Psicológico* (para prácticas de Psicología)",
+            "  🔹 *En la Secretaría de Bienestar Universitario* para prácticas de otras áreas",
             "• Si estás realizando una práctica en Juntas de Acción Comunal o en una entidad externa, debes entregar los formatos en la Secretaría del Consultorio Jurídico de lunes a viernes entre *1:00 PM y 4:00 PM*."
         ].join('\n')
     }
@@ -87,14 +87,15 @@ const MENU_OPTIONS = [
     "4️⃣ ¿Qué horarios hay para la realización de la práctica?",
     "5️⃣ ¿Dónde encuentro los formatos a diligenciar?",
     "6️⃣ ¿Dónde entrego los formatos?",
-    "\n📝 _Escribe el número de tu consulta o 'menu' para volver al menú principal._"
+    "\n📝 _Escribe el número de tu consulta o '0' para volver al menú principal._"
 ].join('\n');
 
 const flowInternshipQA = addKeyword(['preguntas', 'frecuentes', 'consultas'])
     .addAnswer(MENU_OPTIONS, { capture: true }, async (ctx, { flowDynamic, gotoFlow, fallBack }) => {
         const userResponse = ctx.body.trim().toLowerCase();
 
-        if (userResponse === 'menu') {
+        if (userResponse === '0') {
+            // En lugar de 'menu', redirigimos a flowMain
             return gotoFlow(require('../menu/flowMain'));
         }
 
@@ -106,11 +107,10 @@ const flowInternshipQA = addKeyword(['preguntas', 'frecuentes', 'consultas'])
         } else {
             await flowDynamic([
                 "❌ *Opción no válida*",
-                "_Por favor, selecciona un número del 1 al 8 o escribe 'menu' para volver al menú principal._"
+                "_Por favor, selecciona un número del 1 al 6 o escribe '0' para volver al menú principal._"
             ].join('\n'));
             return fallBack(); // Si el input no es válido, regresamos al inicio para que intente de nuevo
         }
     });
 
 module.exports = flowInternshipQA;
-

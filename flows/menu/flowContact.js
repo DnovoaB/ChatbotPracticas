@@ -10,7 +10,7 @@ const flowContact = addKeyword(['contacto','urgente'])
         '• Lunes a Viernes: 8:00 AM - 5:00 PM',     
         '*Ubicación:*',
         '• Casa Verde, sede administrativa\n',
-        'Para volver al menú principal, escribe "menu"'
+        'Para volver al menú principal, escribe "0"'
     ],
     { capture: true },
     async (ctx, { gotoFlow }) => {
